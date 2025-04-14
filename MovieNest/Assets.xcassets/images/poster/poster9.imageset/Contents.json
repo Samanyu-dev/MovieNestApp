@@ -1,0 +1,23 @@
+{
+  "images" : [
+    {
+      "filename" : "DUNE MOVIE POSTER 1 Sided ORIGINAL Mini Sheet 11_5 x 17 TIMOTHEE CHALAMET ZENDAYA.jpg",
+      "idiom" : "universal",
+      "scale" : "1x"
+    },
+    {
+      "filename" : "DUNE MOVIE POSTER 1 Sided ORIGINAL Mini Sheet 11_5 x 17 TIMOTHEE CHALAMET ZENDAYA 1.jpg",
+      "idiom" : "universal",
+      "scale" : "2x"
+    },
+    {
+      "filename" : "DUNE MOVIE POSTER 1 Sided ORIGINAL Mini Sheet 11_5 x 17 TIMOTHEE CHALAMET ZENDAYA 2.jpg",
+      "idiom" : "universal",
+      "scale" : "3x"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

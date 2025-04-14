@@ -1,0 +1,23 @@
+{
+  "images" : [
+    {
+      "filename" : "Register - Login.jpg",
+      "idiom" : "universal",
+      "scale" : "1x"
+    },
+    {
+      "filename" : "#BangBang_ So here's the Official First look….jpg",
+      "idiom" : "universal",
+      "scale" : "2x"
+    },
+    {
+      "filename" : "#BangBang_ So here's the Official First look… 1.jpg",
+      "idiom" : "universal",
+      "scale" : "3x"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}
