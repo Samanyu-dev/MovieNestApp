@@ -351,12 +351,6 @@ This project is open source and available under the [MIT License](LICENSE).
 
 ## 🏆 Acknowledgments
 
-### Special Thanks
-
-- **🎬 TMDb**: For comprehensive movie database
-- **👥 Contributors**: Amazing community support
-- **🍎 Apple**: For excellent development tools
-- **📚 Open Source**: For inspiring libraries
 
 ### Resources Used
 
@@ -374,8 +368,8 @@ This project is open source and available under the [MIT License](LICENSE).
 ### Get in Touch
 
 [![GitHub](https://img.shields.io/badge/GitHub-Samanyu--dev-181717?style=for-the-badge&logo=github)](https://github.com/Samanyu-dev)
-[![Email](https://img.shields.io/badge/Email-Contact-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:your.email@example.com)
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://linkedin.com/in/yourprofile)
+[![Email](https://img.shields.io/badge/Email-Contact-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:allipuramsamanyu@gmail.com)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://linkedin.com/in/samanyu-reddy-allipuram)
 
 ### Project Links
 
