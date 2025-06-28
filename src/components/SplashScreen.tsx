@@ -1,26 +1,10 @@
 
 import { useState, useEffect } from 'react';
 import { Star, Film, Sparkles } from 'lucide-react';
-import { Canvas } from '@react-three/fiber';
-import { OrbitControls, Sphere, MeshDistortMaterial } from '@react-three/drei';
 
 interface SplashScreenProps {
   onComplete: () => void;
 }
-
-const AnimatedSphere = () => {
-  return (
-    <Sphere visible args={[1, 100, 200]} scale={2}>
-      <MeshDistortMaterial
-        color="#8b5cf6"
-        attach="material"
-        distort={0.3}
-        speed={1.5}
-        roughness={0}
-      />
-    </Sphere>
-  );
-};
 
 const SplashScreen = ({ onComplete }: SplashScreenProps) => {
   const [progress, setProgress] = useState(0);
@@ -49,16 +33,6 @@ const SplashScreen = ({ onComplete }: SplashScreenProps) => {
 
   return (
     <div className="fixed inset-0 bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 flex items-center justify-center z-50">
-      {/* 3D Background */}
-      <div className="absolute inset-0 opacity-30">
-        <Canvas>
-          <ambientLight intensity={0.5} />
-          <directionalLight position={[10, 10, 5]} intensity={1} />
-          <AnimatedSphere />
-          <OrbitControls enableZoom={false} autoRotate autoRotateSpeed={1} />
-        </Canvas>
-      </div>
-
       {/* Content */}
       <div className={`text-center z-10 transition-all duration-1000 ${
         showContent ? 'opacity-100 scale-100' : 'opacity-0 scale-95'

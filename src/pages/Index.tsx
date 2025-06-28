@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from 'react';
 import { Search, TrendingUp, Star, Clock, Users, Menu, X, Heart, BarChart3, Calendar, MessageSquare, User } from 'lucide-react';
 import MovieCard from '../components/MovieCard';
@@ -6,7 +7,6 @@ import GenreCarousel from '../components/GenreCarousel';
 import HeroSection from '../components/HeroSection';
 import SplashScreen from '../components/SplashScreen';
 import SwipeCarousel from '../components/SwipeCarousel';
-import FloatingElements3D from '../components/FloatingElements3D';
 import MovieDetailsModal from '../components/MovieDetailsModal';
 import ProfileSection from '../components/ProfileSection';
 import FriendsSection from '../components/FriendsSection';
@@ -111,9 +111,6 @@ const Index = () => {
 
   const renderHomeView = () => (
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 relative">
-      {/* 3D Floating Elements */}
-      <FloatingElements3D />
-
       {/* Enhanced Hero Section */}
       <HeroSection movie={trendingMovies[0]} />
 
