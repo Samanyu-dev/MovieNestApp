@@ -1,7 +1,6 @@
 
-import { useRef } from 'react';
+import { useRef, useEffect } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
-import { Sphere, Box, Torus } from '@react-three/drei';
 import * as THREE from 'three';
 
 const FloatingShape = ({ position, color, shape = 'sphere' }: { 
@@ -21,31 +20,39 @@ const FloatingShape = ({ position, color, shape = 'sphere' }: {
 
   if (shape === 'box') {
     return (
-      <Box ref={meshRef} position={position} args={[1, 1, 1]}>
+      <mesh ref={meshRef} position={position}>
+        <boxGeometry args={[1, 1, 1]} />
         <meshStandardMaterial color={color} transparent opacity={0.6} />
-      </Box>
+      </mesh>
     );
   }
 
   if (shape === 'torus') {
     return (
-      <Torus ref={meshRef} position={position} args={[0.5, 0.2, 16, 100]}>
+      <mesh ref={meshRef} position={position}>
+        <torusGeometry args={[0.5, 0.2, 16, 100]} />
         <meshStandardMaterial color={color} transparent opacity={0.6} />
-      </Torus>
+      </mesh>
     );
   }
 
   return (
-    <Sphere ref={meshRef} position={position} args={[0.5, 32, 32]}>
+    <mesh ref={meshRef} position={position}>
+      <sphereGeometry args={[0.5, 32, 32]} />
       <meshStandardMaterial color={color} transparent opacity={0.6} />
-    </Sphere>
+    </mesh>
   );
 };
 
 const FloatingElements3D = () => {
   return (
     <div className="fixed inset-0 pointer-events-none z-0">
-      <Canvas camera={{ position: [0, 0, 10], fov: 60 }}>
+      <Canvas 
+        camera={{ position: [0, 0, 10], fov: 60 }}
+        onCreated={({ gl }) => {
+          gl.setClearColor('#000000', 0);
+        }}
+      >
         <ambientLight intensity={0.5} />
         <directionalLight position={[10, 10, 5]} intensity={1} />
         
