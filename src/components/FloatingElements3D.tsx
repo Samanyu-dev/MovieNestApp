@@ -19,13 +19,26 @@ const FloatingShape = ({ position, color, shape = 'sphere' }: {
     }
   });
 
-  const ShapeComponent = shape === 'box' ? Box : shape === 'torus' ? Torus : Sphere;
-  const args = shape === 'box' ? [1, 1, 1] : shape === 'torus' ? [0.5, 0.2, 16, 100] : [0.5, 32, 32];
+  if (shape === 'box') {
+    return (
+      <Box ref={meshRef} position={position} args={[1, 1, 1]}>
+        <meshStandardMaterial color={color} transparent opacity={0.6} />
+      </Box>
+    );
+  }
+
+  if (shape === 'torus') {
+    return (
+      <Torus ref={meshRef} position={position} args={[0.5, 0.2, 16, 100]}>
+        <meshStandardMaterial color={color} transparent opacity={0.6} />
+      </Torus>
+    );
+  }
 
   return (
-    <ShapeComponent ref={meshRef} position={position} args={args}>
+    <Sphere ref={meshRef} position={position} args={[0.5, 32, 32]}>
       <meshStandardMaterial color={color} transparent opacity={0.6} />
-    </ShapeComponent>
+    </Sphere>
   );
 };
 
