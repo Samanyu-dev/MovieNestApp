@@ -1,10 +1,12 @@
-
 import { useState, useEffect } from 'react';
-import { Search, TrendingUp, Star, Clock, Users, Menu, X } from 'lucide-react';
+import { Search, TrendingUp, Star, Clock, Users, Menu, X, Heart } from 'lucide-react';
 import MovieCard from '../components/MovieCard';
 import SearchBar from '../components/SearchBar';
 import GenreCarousel from '../components/GenreCarousel';
 import HeroSection from '../components/HeroSection';
+import SplashScreen from '../components/SplashScreen';
+import SwipeCarousel from '../components/SwipeCarousel';
+import FloatingElements3D from '../components/FloatingElements3D';
 import { fetchTrendingMovies, fetchTopRatedMovies, fetchUpcomingMovies } from '../services/tmdbApi';
 
 const Index = () => {
@@ -14,6 +16,9 @@ const Index = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [showSplash, setShowSplash] = useState(true);
+  const [showSwipeMode, setShowSwipeMode] = useState(false);
+  const [watchlist, setWatchlist] = useState([]);
 
   useEffect(() => {
     fetchMovieData();
@@ -60,6 +65,23 @@ const Index = () => {
     }
   };
 
+  const handleSplashComplete = () => {
+    setShowSplash(false);
+  };
+
+  const handleSwipeRight = (movie) => {
+    setWatchlist(prev => [...prev, movie]);
+    console.log('Added to watchlist:', movie.title);
+  };
+
+  const handleSwipeLeft = (movie) => {
+    console.log('Passed on:', movie.title);
+  };
+
+  if (showSplash) {
+    return <SplashScreen onComplete={handleSplashComplete} />;
+  }
+
   if (isLoading) {
     return (
       <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 flex items-center justify-center">
@@ -80,7 +102,10 @@ const Index = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900">
+    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 relative">
+      {/* 3D Floating Elements */}
+      <FloatingElements3D />
+
       {/* Enhanced Navigation with scroll transparency */}
       <nav className={`fixed top-0 w-full z-50 transition-all duration-300 ${
         isScrolled 
@@ -99,8 +124,14 @@ const Index = () => {
               <div className="hidden md:flex space-x-6">
                 <a href="#" className="text-white hover:text-purple-400 transition-colors font-medium">Home</a>
                 <a href="#" className="text-gray-300 hover:text-purple-400 transition-colors font-medium">Movies</a>
-                <a href="#" className="text-gray-300 hover:text-purple-400 transition-colors font-medium">TV Shows</a>
-                <a href="#" className="text-gray-300 hover:text-purple-400 transition-colors font-medium">Watchlist</a>
+                <button 
+                  onClick={() => setShowSwipeMode(!showSwipeMode)}
+                  className="text-gray-300 hover:text-purple-400 transition-colors font-medium flex items-center space-x-1"
+                >
+                  <Heart className="w-4 h-4" />
+                  <span>Discover</span>
+                </button>
+                <a href="#" className="text-gray-300 hover:text-purple-400 transition-colors font-medium">Watchlist ({watchlist.length})</a>
               </div>
             </div>
             <div className="flex items-center space-x-4">
@@ -131,11 +162,30 @@ const Index = () => {
         )}
       </nav>
 
+      {/* Swipe Mode Toggle */}
+      {showSwipeMode && (
+        <div className="fixed inset-0 bg-black/80 backdrop-blur-sm z-40 flex items-center justify-center p-4">
+          <div className="relative w-full max-w-md">
+            <button
+              onClick={() => setShowSwipeMode(false)}
+              className="absolute -top-12 right-0 w-10 h-10 bg-gray-800 hover:bg-gray-700 rounded-full flex items-center justify-center z-50"
+            >
+              <X className="w-5 h-5 text-white" />
+            </button>
+            <SwipeCarousel 
+              movies={trendingMovies}
+              onSwipeRight={handleSwipeRight}
+              onSwipeLeft={handleSwipeLeft}
+            />
+          </div>
+        </div>
+      )}
+
       {/* Enhanced Hero Section */}
       <HeroSection movie={trendingMovies[0]} />
 
       {/* Main Content with enhanced spacing and animations */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-16">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-16 relative z-10">
         {/* Enhanced Trending Section */}
         <section className="animate-fade-in">
           <div className="flex items-center justify-between mb-8">
