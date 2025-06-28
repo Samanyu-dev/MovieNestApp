@@ -17,3 +17,5 @@ export function useIsMobile() {
 
   return !!isMobile
 }
+
+// removing hooks for now as threejs 3d element is giving trouble
